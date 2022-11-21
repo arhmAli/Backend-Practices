@@ -32,4 +32,22 @@ http.createServer((req, res) => {
   })
   .listen(8282, "127.0.0.1");
 
+
+//some JSON response
+const name=["arham","sheraz"];
+const data={
+name:"arham"
+ age:"22",
+ name:"sheraz"
+ age:"21"
+}
+http.createServer((req,res)=>{
+res.writeHead(200,{"Content-type":"application/json"});
+    const json=JSON.stringify({
+    name,
+    data
+    })
+res.end(json)
+})
+.listen(8282,'127.0.0.1')
  
