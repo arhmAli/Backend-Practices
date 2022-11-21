@@ -22,4 +22,14 @@ http.createServer((req, res) => {
   })
   .listen(8282, "127.0.0.1");
 
+//for external html file
+
+const fs=require("fs");
+let HTML=fs.readFileSync(`${__dirname}/index.html`)
+http.createServer((req, res) => {
+    res.writeHead(200, { "Content-type": "text/html" });
+    res.end(HTML);
+  })
+  .listen(8282, "127.0.0.1");
+
  
