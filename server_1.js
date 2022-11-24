@@ -23,5 +23,18 @@ res.send({
     Model:"BR-V"
 })
 })
+//If we have dynamic routes this is how can we access them
+app.get("/api/data/:id", (req, res) => {
+    let id = req.params.id
+    res.send(
+        `
+        <html>
+        <body>
+        <h1>The id that user entered is ${id}</h1>
+        </body>
+        </html>
+        `
+    )
+})
 const port = process.env.port || 3000
 app.listen(port)
