@@ -36,5 +36,17 @@ app.get("/api/data/:id", (req, res) => {
         `
     )
 })
+//if we have query string carname in our url this is how we can access them
+app.get("/api/car", (req, res) => {
+  //  http://localhost:3000/api/car?carname=honda-civic&model=2007 this is url which we worked on for this example
+    let carname = req.query.carname;
+    let model = req.query.model;
+    res.send({
+        carname,
+        model
+    }
+    )
+})
+
 const port = process.env.port || 3000
 app.listen(port)
