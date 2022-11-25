@@ -2,6 +2,9 @@
 const express = require('express');
 const app = express()
 
+
+//middle ware for the css type file
+app.use('css',express.static(__dirname+'public/css'))
 app.get('/', (req, res) => {
     res.send("<html><body><h1>Hello there</h1></body></html>")
 })
