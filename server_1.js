@@ -10,6 +10,7 @@ app.get('/', (req, res) => {
 })
 //alternate method for middleware
 app.use('/', (req, res, next) => {
+    res.cookie("cookieName","cookieValue")
     console.log(req)
     next()
 })
