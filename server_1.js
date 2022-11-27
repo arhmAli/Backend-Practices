@@ -8,6 +8,11 @@ app.use('css',express.static(__dirname+'public/css'))
 app.get('/', (req, res) => {
     res.send("<html><body><h1>Hello there</h1></body></html>")
 })
+//alternate method for middleware
+app.use('/', (req, res, next) => {
+    console.log(req)
+    next()
+})
 app.get("/api/data/name", (req, res) => {
     res.send({
         name: "hello",
