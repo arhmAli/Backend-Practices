@@ -14,7 +14,11 @@ app.use('/', (req, res, next) => {
     console.log(req)
     next()
 })
-app.get("/api/data/name", (req, res) => {
+const hello = (req, res, next) => {
+    console.log("Inside the function")
+    next()
+}
+app.get("/api/data/name", (req,hello,res) => {
     res.send({
         name: "hello",
         age: "20"
