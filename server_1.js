@@ -58,6 +58,20 @@ app.get("/api/data/:id", (req, res) => {
         `
     )
 })
+//taking out data from a form
+app.get('/userquery', (req, res) => {
+    let user_form = fs.readFileSync(`${__dirname}/views/form.html`)
+    res.end(user_form)
+})
+app.post('/api/query', urlEncoded, (req, res) => {
+    console.log(req.body)
+    res.sendStatus(200)
+})
+app.post('/api/adduser', (req, res) => {
+    console.log(req.body)
+    res.sendStatus(200)
+})
+
 //if we have query string carname in our url this is how we can access them
 app.get("/api/car", (req, res) => {
   //  http://localhost:3000/api/car?carname=honda-civic&model=2007 this is url which we worked on for this example
