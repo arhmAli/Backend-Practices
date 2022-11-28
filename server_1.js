@@ -1,6 +1,15 @@
 //Server made using express library
 const express = require('express');
 const app = express()
+const fs = require('fs');
+
+//body-parser
+const bodyParser = require('body-parser')
+
+let urlEncoded = bodyParser.urlencoded({ extended: false })
+app.get('/', (req, res) => {
+    res.send("<html><body><h1>Hello there</h1></body></html>")
+})
 
 
 //middle ware for the css type file
