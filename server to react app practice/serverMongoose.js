@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const mongoose = require("mongoose");
 
-const mongoUrl = "mongodb+srv://arhamkhan:arhamkhan1@cluster0.xslqt8v.mongodb.net/?retryWrites=true&w=majority"
+const mongoUrl = "mongodb+srv://admin:randpassowdasnk@cluster0.xslqt8v.mongodb.net/?retryWrites=true&w=majority"
 mongoose.connect(mongoUrl, {
     useNewUrlParser: true,
     useunifiedTopology: true
