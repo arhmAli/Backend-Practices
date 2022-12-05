@@ -25,15 +25,19 @@ import React from "react";
 import { Component } from 'react'
 import axios from 'axios'
 class App extends Component {
-  componentDidMount() {
+ adduser() {
     axios.get('/api/users')
       .then(res => {
         console.log(res.data)
+      }).catch(() => {
+        console.log("errrorrr")
       })
   }
   render() {
     return (
-      <div>App</div>
+      <div>
+        <button onClick={() => this.adduser()}>Add user</button>
+      </div>
     )
   }
 }
