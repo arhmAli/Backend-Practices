@@ -25,18 +25,20 @@ import React from "react";
 import { Component } from 'react'
 import axios from 'axios'
 class App extends Component {
- adduser() {
-    axios.get('/api/users')
-      .then(res => {
-        console.log(res.data)
-      }).catch(() => {
-        console.log("errrorrr")
-      })
+  onSubmitCar() {
+    axios.post('/api/addcar', {
+      name: "Honda-Civic",
+      model: 2015,
+      availibilty: true,
+      yearLaunched: 2015
+    }).then(res => {
+      console.log(res.data)
+    })
   }
   render() {
     return (
       <div>
-        <button onClick={() => this.adduser()}>Add user</button>
+        <button onClick={() => this.onSubmitCar()}>Add user</button>
       </div>
     )
   }
