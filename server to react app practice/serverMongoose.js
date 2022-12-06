@@ -1,16 +1,22 @@
 const express = require('express');
 const app = express();
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser")
 
-const mongoUrl = "mongodb+srv://admin:randpassowdasnk@cluster0.xslqt8v.mongodb.net/?retryWrites=true&w=majority"
+
+app.use(bodyParser.json());
+
+
+
+const mongoUrl = "mongodb+srv://admin:1212131131@cluster0.xslqt8v.mongodb.net/?retryWrites=true&w=majority"
 mongoose.connect(mongoUrl, {
     useNewUrlParser: true,
-    useunifiedTopology: true
+    useUnifiedTopology: true
 });
 
 
 //////**************   CAR SCHEMA **************///
-const carschema = mongoose.schema({
+const carschema = mongoose.Schema({
     name: String,
     model: Number,
     availibilty: Boolean,
@@ -19,6 +25,9 @@ const carschema = mongoose.schema({
 const Car = mongoose.model('Car', carschema)
 
 //////**************   CAR SCHEMA **************///
+app.post('/api/addcar', () => {
+    console.log(req.body)
+})
 
 
 const port = process.env.port || 5000;
