@@ -25,7 +25,7 @@ const carschema = mongoose.Schema({
 const Car = mongoose.model('Car', carschema)
 
 //////**************   CAR SCHEMA **************///
-app.post('/api/addcar', () => {
+app.post('/api/addcar', (req,res) => {
     console.log(req.body)
 })
 
