@@ -25,6 +25,15 @@ import React from "react";
 import { Component } from 'react'
 import axios from 'axios'
 class App extends Component {
+  componentDidMount() {
+    axios.get("/api/getcar")
+      .then(res => {
+        console.log(res.data)
+      })
+  }
+  state = {
+    cars: []
+  }
   onSubmitCar() {
     axios.post('/api/addcar', {
       name: "Honda-Civic",
@@ -38,7 +47,12 @@ class App extends Component {
   render() {
     return (
       <div>
-        <button onClick={() => this.onSubmitCar()}>Add user</button>
+        <span>Check the console !</span>
+        <hr />
+        <button onClick={() => this.onSubmitCar()}>Add a car</button>
+        <button>{this.state.cars.map((item, index) =>
+          <div>{item.name}</div>
+        )}</button>
       </div>
     )
   }
