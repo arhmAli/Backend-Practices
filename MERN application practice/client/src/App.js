@@ -25,14 +25,15 @@ import React from "react";
 import { Component } from 'react'
 import axios from 'axios'
 class App extends Component {
-  componentDidMount() {
-    axios.get("/api/getcar")
-      .then(res => {
-        console.log(res.data)
-      })
-  }
+  
   state = {
     cars: []
+  }
+  componentDidMount() {
+    axios.get('/api/getcars')
+      .then(response => {
+        this.setState({ cars: response.data })
+      })
   }
   onSubmitCar() {
     axios.post('/api/addcar', {
