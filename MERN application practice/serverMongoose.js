@@ -39,6 +39,12 @@ app.post('/api/addcar', (req, res) => {
         res.status(200).json(doc)
     })
 })
+app.get("/api/getcars", (req, res) => {
+    Car.find((err, doc) => {
+        if (err) return console.log(err)
+        res.json(doc)
+    })
+})
 
 
 const port = process.env.port || 5000;
