@@ -8,7 +8,7 @@ app.use(bodyParser.json()); //act as a middleware between backend and front end
 
 
 
-const mongoUrl = "mongodb+srv://admin:somepassword@cluster0.xslqt8v.mongodb.net/?retryWrites=true&w=majority"
+const mongoUrl = "mongodb+srv://adminname:thepassword@cluster0.xslqt8v.mongodb.net/?retryWrites=true&w=majority"
 mongoose.connect(mongoUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -26,12 +26,12 @@ const Car = mongoose.model('Car', carschema)
 
 //////**************   CAR SCHEMA **************///
 app.post('/api/addcar', (req, res) => {
-    const addCar = new Car()
-    addCar.save({
+    const addCar = new Car({
         name: req.body.name,
         model: req.body.model,
         availibilty: req.body.availibilty,
         yearLaunched: req.body.yearLaunched
+
     })
     console.log(req.body)
     addCar.save((err, doc) => {
@@ -40,20 +40,26 @@ app.post('/api/addcar', (req, res) => {
     })
 })
 app.get("/api/getcars", (req, res) => {
-    Car.find((err, doc) => {
+    Car.find({}, (err, doc) => {
         if (err) return console.log(err)
         res.json(doc)
     })
-     try {
-        Car.findOne({ name: "Honda-civic" }, (err, doc) => {
-            res.json(doc)
-        })
-    }
-    catch (err) {
-        console.log(err)
-    }
+    // try {
+    //     Car.findOne({ name: "Honda-civic" }, (err, doc) => {
+    //         res.json(doc)
+    //     })
+    // }
+    // catch (err) {
+    //     console.log(err)
+    // }
 })
-
+app.post("/api/removecar", (req, res) => {
+    const yearLaunched = req.body.yearLaunched;
+    Car.findOneAndRemove({ yearLaunched }, (err, doc) => {
+        error ? console.log(err) : null;
+        res.json(doc)
+    })
+})
 
 const port = process.env.port || 5000;
 app.listen(port)
