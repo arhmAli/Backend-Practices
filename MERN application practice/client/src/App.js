@@ -25,15 +25,12 @@ import React from "react";
 import { Component } from 'react'
 import axios from 'axios'
 class App extends Component {
-  
+
   state = {
     cars: []
   }
   componentDidMount() {
-    axios.get('/api/getcars')
-      .then(response => {
-        this.setState({ cars: response.data })
-      })
+    this.getCars()
   }
   onSubmitCar() {
     axios.post('/api/addcar', {
@@ -45,12 +42,30 @@ class App extends Component {
       console.log(res.data)
     })
   }
+  getCars = () => {
+    axios.get('/api/getcars')
+      .then(response => {
+        this.setState({ cars: response.data })
+      })
+
+  }
+  onCarRemove() {
+    axios.post('/api/removecar', {
+      yearLaunched: 2015
+    }).then(res => {
+      this.getCars()
+    })
+
+  }
   render() {
     return (
       <div>
         <span>Check the console !</span>
         <hr />
         <button onClick={() => this.onSubmitCar()}>Add a car</button>
+        <hr />
+        <button onClick={() => this.onCarRemove()}>Remove a car</button>
+
         <button>{this.state.cars.map((item, index) =>
           <div>{item.name}</div>
         )}</button>
