@@ -44,6 +44,14 @@ app.get("/api/getcars", (req, res) => {
         if (err) return console.log(err)
         res.json(doc)
     })
+     try {
+        Car.findOne({ name: "Honda-civic" }, (err, doc) => {
+            res.json(doc)
+        })
+    }
+    catch (err) {
+        console.log(err)
+    }
 })
 
 
