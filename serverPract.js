@@ -15,3 +15,8 @@ app.get("/",(req,res)=>{
   const port=process.evt||5000;
   
   app.listen(port)
+
+  
+  //For mongoose
+  const mongoose=require("mongoose")
+  const mongooUrl="someUrl"
