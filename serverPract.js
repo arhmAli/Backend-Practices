@@ -11,3 +11,7 @@ app.get("/",(req,res)=>{
   app.get("/",(req,res)=>{
   console.log(res)
   })
+
+  const port=process.evt||5000;
+  
+  app.listen(port)
