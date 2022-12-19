@@ -20,3 +20,20 @@ app.get("/",(req,res)=>{
   //For mongoose
   const mongoose=require("mongoose")
   const mongooUrl="someUrl"
+  
+  mongoose.connect(mongooUrl,{
+  urlEncoded:true,
+    topology:true
+  })
+  
+  //Insert Some schema
+  
+  const Student=mongoose.schema("Student",{
+  
+    name:String,
+    RollNo:Number,
+    isPresent:Boolean
+  })
+
+  
+  //Now we can test the schema by putting values
