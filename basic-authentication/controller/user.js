@@ -7,6 +7,9 @@ try{
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(req.body.password, salt);
         const newUser=new User({...req.body,password:hash});
-        await newUser
+        await newUser.save();
+        res.status(200).send("Created user")
+}catch(e){
+console.log(e)
 }
 }
